@@ -1,0 +1,32 @@
+.placeholder{
+    padding: 0px 100px;
+    background-color: #fff !important;
+}
+body{
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+.parallax-window{
+    background: url(../assets/images/home-farmer.jpg) !important; 
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+}
+.tm-section-title{
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+    color: #000;
+    text-shadow: none!important;
+}
+.home-nav-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bg-img-fix{
+    background-image: url(../assets/images/machinery.jpg);
+    height: 200px;
+    width: 100%;
+    background-position: center;
+    background-attachment: fixed;
+}
