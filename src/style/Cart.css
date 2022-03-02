@@ -1,0 +1,33 @@
+.heading {
+    text-align: center;
+    background-color: green;
+    margin: 20px auto;
+    padding: 10px 20px;
+    padding-bottom: 2.5px;
+    border-radius: 50px;
+    color: white;
+    margin-top: 80px;
+}
+
+#Products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.products {
+    margin: 5px;
+}
+#quantity-of-product{
+    width: 50px;
+    border-bottom: 2px solid black;
+    font-size: large;
+}
+.card{
+    width: 300px;
+}
+.card-img-top{
+    height: 180px;
+    width: 180px;
+    margin: auto;
+}

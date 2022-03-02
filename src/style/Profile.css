@@ -1,0 +1,39 @@
+#profile{
+    width: 80%;
+    margin: 30px auto;
+}
+
+#profile-top{
+    max-width: 96%;
+    margin: auto;
+    border: 2px solid grey;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+#profile-picture-container{
+    width: 30%;
+    border: 2px solid red;
+}
+
+#profile-picture{
+    height: 200px;
+    width: 200px;
+    margin:auto;
+}
+
+#profile-main-details{
+    width: 30%;
+    border: 2px solid red;
+}
+#other-details{
+    width: 88%;
+    margin: auto;
+}
+.label{
+    width: 50%;
+    padding-left: 100px;
+}
+#submit-button{
+    margin: 20px 100%;
+}

@@ -30,3 +30,7 @@ body{
     background-position: center;
     background-attachment: fixed;
 }
+.tm-nav-link.active, .tm-nav-link:hover{
+    color: #fff;
+    text-decoration: none;
+}
