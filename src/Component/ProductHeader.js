@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../style/navbar.css';
+import firebase from '../firebase'
 function Product_header() {
     return (
         <>
@@ -34,6 +35,9 @@ function Product_header() {
                         </li> 
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/products">Products</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" onClick={()=>{firebase.auth().signOut()}} to="/login">Sign Out</NavLink>
                         </li>
                     </ul>
                 </div>

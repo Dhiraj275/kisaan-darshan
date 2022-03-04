@@ -34,3 +34,14 @@ body{
     color: #fff;
     text-decoration: none;
 }
+.form-control{
+    border: 2px solid #777;
+    border-radius: 10px;
+    padding-left: 50px;
+    z-index: 9;
+    background: transparent;
+}
+.form-group i{
+    margin-right: -25px;
+    z-index: 99;
+}
