@@ -2,6 +2,7 @@ import '../style/Profile.css'
 import ProductHeader from '../Component/ProductHeader';
 import firebase from '../firebase'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 const firestore = firebase.firestore()
 function Profile() {
     const [userData, setUserData] = useState([])
@@ -41,7 +42,7 @@ function Profile() {
                                 <table id="other-details">
                                     <tr>
                                         <td className="label"><label htmlFor="full-name">Name</label></td>
-                                        <td> <input type="text" disabled value={`${userData.firstname} ${userData.lastname}`} name="full-name" id="full-name" /> </td>
+                                        <td> <input type="text" disabled value={`${userData.name}`} name="full-name" id="full-name" /> </td>
                                     </tr>
                                     <tr>
                                         <td className="label"><label htmlFor="address">Address</label></td>
@@ -69,6 +70,7 @@ function Profile() {
                                     </tr>
     
                                     <input id='submit-button' type="submit" value="Update Details" />
+                                    
                                 </table>
                             </form>
                         </div>

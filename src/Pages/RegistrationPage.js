@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import firebase from '../firebase';
+import '../style/registration.css'
 function RegistrationPage() {
 
     const [formData, setFormData] = useState([])
@@ -9,12 +11,12 @@ function RegistrationPage() {
         value = event.target.value;
         setFormData({ ...formData, [name]: value });
     }
-    const registrUser = ()=>{
+    const registrUser = () => {
         console.log(formData)
-        firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).then((event)=>{
+        firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).then((event) => {
             // console.log(event.user.uid)
             delete formData.password
-            firebase.firestore().collection('users').doc(event.user.uid).set({...formData}).then(()=>{
+            firebase.firestore().collection('users').doc(event.user.uid).set({ ...formData }).then(() => {
                 alert("User Registed Successfully!")
                 window.location.replace('/login')
             })
@@ -22,120 +24,58 @@ function RegistrationPage() {
     }
     return (
         <>
-            <div className="form_wrapper row p-5">
-                <div className="form_container col-8 m-auto">
-                    <div className="title_container">
-                        <h2>Registration Form</h2>
+            <div className="registration">
+                <div id="wrapper">
+                    <legend>Registration<span className="material-icons">
+                        edit
+                    </span></legend>
+                    <div className="d-flex justify-content-center">
+                        <input onChange={handleFormChanges} className="inputs-reg" type="text" name="name" id="name" placeholder="Full Name" />
                     </div>
-                    <div className="row clearfix">
-                        <div className="">
-                            <form>
-                                <div className="row clearfix">
-                                    <div className="col_half">
-                                        <div className=" d-flex align-items-center  form-group d-flex flex-row"> <span><i aria-hidden="true" className="fa fa-user"></i></span>
-                                            <input type="text" className="form-control" onChange={handleFormChanges} name="firstname" placeholder="First Name" required />
-                                        </div>
-                                    </div>
-                                    <br />
-                                    <div className="col_half">
-                                        <div className=" d-flex align-items-center  form-group d-flex flex-row"> <span><i aria-hidden="true" className="fa fa-user"></i></span>
-                                            <input type="text" className="form-control" onChange={handleFormChanges} name="lastname" placeholder="Last Name" required />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="input_field  d-flex align-items-center  form-group"> <span><i aria-hidden="true" className="fa fa-envelope"></i></span>
-                                    <select className="form-control" onChange={handleFormChanges} name="accountType" id="">
-                                        <option value="Farmer">Farmer</option>
-                                        <option value="Consumer">Consumer</option>
-                                        <option value="Coorporate">Coorporate</option>
-                                    </select>
-                                </div>
-                                <div className="input_field  d-flex align-items-center  form-group"> <span><i aria-hidden="true" className="fa fa-envelope"></i></span>
-                                    <input type="text" className="form-control" onChange={handleFormChanges} name="address" placeholder="Address" required />
-                                </div>
-                                <div className=" d-flex align-items-center  form-group d-flex flex-row col-md-4">
-                                    <select className="form-control" onChange={handleFormChanges}  name="state" id="inputState">
-                                        <option value="SelectState">Select State</option>
-                                        <option value="Andra Pradesh">Andra Pradesh</option>
-                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                        <option value="Assam">Assam</option>
-                                        <option value="Bihar">Bihar</option>
-                                        <option value="Chhattisgarh">Chhattisgarh</option>
-                                        <option value="Goa">Goa</option>
-                                        <option value="Gujarat">Gujarat</option>
-                                        <option value="Haryana">Haryana</option>
-                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                        <option value="Jharkhand">Jharkhand</option>
-                                        <option value="Karnataka">Karnataka</option>
-                                        <option value="Kerala">Kerala</option>
-                                        <option value="Madya Pradesh">Madya Pradesh</option>
-                                        <option value="Maharashtra">Maharashtra</option>
-                                        <option value="Manipur">Manipur</option>
-                                        <option value="Meghalaya">Meghalaya</option>
-                                        <option value="Mizoram">Mizoram</option>
-                                        <option value="Nagaland">Nagaland</option>
-                                        <option value="Orissa">Orissa</option>
-                                        <option value="Punjab">Punjab</option>
-                                        <option value="Rajasthan">Rajasthan</option>
-                                        <option value="Sikkim">Sikkim</option>
-                                        <option value="Tamil Nadu">Tamil Nadu</option>
-                                        <option value="Telangana">Telangana</option>
-                                        <option value="Tripura">Tripura</option>
-                                        <option value="Uttaranchal">Uttaranchal</option>
-                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                        <option value="West Bengal">West Bengal</option>
-                                        <option disabled>UNION Territories</option>
-                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                        <option value="Chandigarh">Chandigarh</option>
-                                        <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-                                        <option value="Daman and Diu">Daman and Diu</option>
-                                        <option value="Delhi">Delhi</option>
-                                        <option value="Lakshadeep">Lakshadeep</option>
-                                        <option value="Pondicherry">Pondicherry</option>
-                                    </select>
-                                </div>
-                                <div className=" d-flex align-items-center  form-group d-flex flex-row col-md-4">
-                                    <select className="form-control" onChange={handleFormChanges}  id="inputDistrict" name="state">
-                                        <option value="">Select District</option>
-                                    </select>
-                                </div>
-                                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                                    crossorigin="anonymous"></script>
-                              
+                    <div className="d-flex justify-content-center">
+                        <input onChange={handleFormChanges} className="inputs-reg" type="text" name="address" id="address" placeholder="Address" />
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        <input onChange={handleFormChanges} className="inputs-reg" type="text" name="city" id="city" placeholder="City" />
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        <input onChange={handleFormChanges} className="inputs-reg" type="number" name="pincode" id="pincode" placeholder="Pincode" />
+                    </div>
 
-                                <div className="input_field  d-flex align-items-center  form-group"> <span><i aria-hidden="true" className="fa fa-envelope"></i></span>
-                                    <input type="text" className="form-control" onChange={handleFormChanges} name="block" placeholder="Block No." required />
-                                </div>
-                                <div className="input_field  d-flex align-items-center  form-group"> <span><i aria-hidden="true" className="fa fa-envelope"></i></span>
-                                    <input type="number" name="phone" className="form-control" onChange={handleFormChanges} placeholder="Phone.no" required />
-                                </div>
-                                <div className="input_field  d-flex align-items-center  form-group"> <span><i aria-hidden="true" className="fa fa-envelope"></i></span>
-                                    <input type="email" name="email" className="form-control" onChange={handleFormChanges} placeholder="Email" required />
-                                </div>
-                                <div className="input_field  d-flex align-items-center  form-group"> <span><i aria-hidden="true" className="fa fa-envelope"></i></span>
-                                    <input type="text" className="form-control" onChange={handleFormChanges} name="username" placeholder="Username" required />
-                                </div>
-                                <div className="input_field  d-flex align-items-center  form-group"> <span><i aria-hidden="true" className="fa fa-lock"></i></span>
-                                    <input type="password" name="password" className="form-control" onChange={handleFormChanges} placeholder="Password" required />
-                                </div>
-                                <div className="input_field  d-flex align-items-center  form-group"> <span><i aria-hidden="true" className="fa fa-lock"></i></span>
-                                    <input type="password" name="password" className="form-control" placeholder="Re-type Password" required />
-                                </div>
-                                <div className="input_field  d-flex align-items-center  form-group radio_option">
-                                    <input  onChange={()=>setFormData({...formData, gender:"male"})} type="radio" name="radiogroup1" id="rd1" />
-                                    <label for="rd1">Male</label>
-                                    <input  onChange={()=>setFormData({...formData, gender:"female"})} type="radio" name="radiogroup1" id="rd2" />
-                                    <label for="rd2" >Female</label>
-                                </div>
-                                <div className="input_field  d-flex align-items-center  form-group checkbox_option">
-                                    <input   type="checkbox" id="cb1" />
-                                    <label for="cb1">I agree with terms and conditions</label>
-                                </div>
-                                <button onClick={registrUser} type="button">Register</button>
-                            </form>
-                        </div>
+
+                    <div className="d-flex justify-content-center">
+                        <input onChange={handleFormChanges} className="inputs-reg" type="tel" name="phone" id="phone" placeholder="Phone Number" maxlength="10" />
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        <input onChange={handleFormChanges} className="inputs-reg" type="email" name="email" id="email" placeholder="Email id if availaible" />
+                    </div>
+                    <div className="d-flex justify-content-center"> <label for="dob" className="inputs-reg-label">Date of Birth</label></div>
+                    <div className="d-flex justify-content-center">
+                        <input onChange={handleFormChanges} className="inputs-reg" type="date" name="dob" id="dob" placeholder="Date of Birth" />
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        <input onChange={handleFormChanges} className="inputs-reg" type="password" name="password" id="address" placeholder="Create Password" />
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        <input onChange={handleFormChanges} className="inputs-reg" type="password" name="password_confirm" id="address" placeholder="Re-enter Password" required="" />
+                    </div>
+
+                    <div className="d-flex justify-content-center">
+                        <select onChange={handleFormChanges} className="inputs-reg" name="gender" id="gender" required="">
+                            <option value="Not Selected" selected="" disabled="">Select gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <br />
+                    <input type="checkbox" name="agree" id="agree" />
+                    <label for="agree">I agree to the terms and condition mentioned in <a href="">privacy policy and agreement statement</a>.</label>
+                    <br />
+                    <button onClick={registrUser} className="inputs-reg" id="submit" type="button" >Submit</button>
+                    <br /><br />
+                    <div className="d-flex justify-content-center">
+                        <Link to="/login">Hava a account? Login</Link>
                     </div>
                 </div>
             </div>
