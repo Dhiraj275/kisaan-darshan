@@ -9,6 +9,8 @@ import Profile from './Pages/Profile'
 import Products from './Pages/Products'
 import ContactPage from './Pages/ContactPage';
 import RegistrationPage from './Pages/RegistrationPage';
+import Orders from './Pages/Orders';
+import ChangePassword from './Pages/ChangePassword';
 function App() {
   return (
 
@@ -23,6 +25,8 @@ function App() {
            <Route exact path="/about" element={<AboutPage/>}/>
            <Route exact path="/products" element={<Products/>}/>
            <Route exact path="/register" element={<RegistrationPage/>}/>
+           <Route exact path="/orders" element={<Orders/>}/>
+           <Route exact path="/change-password" element={<ChangePassword/>}/>
           </Routes>
       );
 }

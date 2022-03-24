@@ -123,24 +123,24 @@ function HomePage() {
                     }
                 </div>
             </div>
-            <div class="tm-section tm-container-inner">
-                <div class="row">
-                    <div class="col-md-6">
-                        <figure class="tm-description-figure">
-                            <img src={callHelp} alt="Image" height="100px" class="img-fluid" />
+            <div className="tm-section tm-container-inner">
+                <div className="row">
+                    <div className="col-md-6">
+                        <figure className="tm-description-figure">
+                            <img src={callHelp} alt="Image" height="100px" className="img-fluid" />
                         </figure>
                     </div>
-                    <div class="col-md-6">
-                        <div class="tm-description-box">
-                            <h4 class="tm-gallery-title">Expert Call</h4>
-                            <p class="tm-mb-45">
+                    <div className="col-md-6">
+                        <div className="tm-description-box">
+                            <h4 className="tm-gallery-title">Expert Call</h4>
+                            <p className="tm-mb-45">
                                 <br/>
                                     <br/>
                                         If you have any Query
                                         <br/>
                                             feel free to <a href="http://">request a Call</a> or <a href="contact.html">Leave a Messege here</a>
                                         </p>
-                                        <a href="about.html" class="tm-btn tm-btn-default tm-right">Read More</a>
+                                        <a href="about.html" className="tm-btn tm-btn-default tm-right">Read More</a>
                                     </div>
                                 </div>
                         </div>

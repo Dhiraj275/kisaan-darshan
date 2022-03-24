@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2'
 import firebase from '../firebase';
 import '../style/registration.css'
 function RegistrationPage() {
@@ -12,15 +13,25 @@ function RegistrationPage() {
         setFormData({ ...formData, [name]: value });
     }
     const registrUser = () => {
-        console.log(formData)
-        firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).then((event) => {
-            // console.log(event.user.uid)
+
+        firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password)
+        .then((event) => {
+            console.log(event.user.uid)
             delete formData.password
             firebase.firestore().collection('users').doc(event.user.uid).set({ ...formData }).then(() => {
-                alert("User Registed Successfully!")
-                window.location.replace('/login')
+                Swal.fire("User Registed Successfully!", '', 'success').then(()=> {window.location.replace('/login')})
             })
         })
+        .catch((error) => {
+            var code = error.code
+            console.log(code)
+            switch (code) {
+              case 'auth/email-already-in-use':
+                Swal.fire('Email Already Exist', '', "warning")
+            
+            }
+      
+          })
     }
     return (
         <>

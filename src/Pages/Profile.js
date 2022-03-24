@@ -3,13 +3,14 @@ import ProductHeader from '../Component/ProductHeader';
 import firebase from '../firebase'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ProfileComon from '../Component/ProfileComon';
 const firestore = firebase.firestore()
 function Profile() {
     const [userData, setUserData] = useState([])
     const [userId, setUserId] = useState()
     firebase.auth().onAuthStateChanged(user => {
-        if(user){setUserId(user.uid)}
-        else{
+        if (user) { setUserId(user.uid) }
+        else {
             window.location.replace('/login')
         }
     }
@@ -20,65 +21,82 @@ function Profile() {
     }
     getData()
 
-  
-        return (
 
-            userData === undefined ? 'hello' :
-                <>
-                    <ProductHeader />
+    return (
+
+        userData === undefined ? 'hello' :
+            <>
+                <ProductHeader />
+                <br />
+                <br />
+            
                     <br />
                     <br />
-                    <div id="profile">
-                        <div id="profile-top">
-                            <div id="profile-picture-container">
-                                <img id='profile-picture' src="" alt="" />
+                    <div className="container profile-page rounded bg-white  mb-5">
+                        <div className="row">
+                            <ProfileComon/>
+                            <div className="col-md-8">
+                                <div className="p-3 py-5">
+                                    <div className="d-flex justify-content-between align-items-center mb-3">
+                                        <h4 className="text">Profile Settings</h4>
+                                    </div>
+                                    <div className="row mt-2">
+                                        <div className="btn-block"><label className="labels">Name</label><input  type="text" className="form-control" placeholder="Name" value={userData.name} /></div>
+                                    </div>
+                                    <div className="row mt-3">
+                                        <div className="col-md-12">
+                                            <label className="labels">Mobile Number</label>
+                                            <input  type="text" className="form-control" placeholder="" value={userData.phone} />
+                                        </div>
+
+                                        <div className="col-md-12">
+                                            <label className="labels">Address Line</label>
+                                            <input  type="text" className="form-control" placeholder="" value={userData.address} />
+                                        </div>
+
+                                        <div className="col-md-12">
+                                            <label className="labels">Email ID</label>
+                                            <input  type="text" className="form-control" placeholder="" value={userData.email} />
+                                        </div>
+
+                                        <div className="col-md-12">
+                                            <label className="labels">City</label>
+                                            <input  type="text" className="form-control" placeholder="" value={userData.city} />
+                                        </div>
+
+                                        {/* <div className="col-md-12">
+                                            <label className="labels">Ditrict</label>
+                                            <input  type="text" className="form-control" placeholder="" value={userData.name} />
+                                        </div> */}
+
+                                        <div className="col-md-12">
+                                            <label className="labels">Block No.</label>
+                                            <input  type="text" className="form-control" placeholder="" value={userData.pincode} />
+                                        </div>
+
+                                        <div className="col-md-12">
+                                            <label className="labels">Gender</label>
+                                            <input  type="text" className="form-control" placeholder="" value={userData.gender} />
+                                        </div>
+
+                                    </div>
+                                    <div className="mt-5 text-center">
+                                        <button className="btn btn-primary profile-button" type="button">
+                                            Update Profile
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div id="profile-main-details">
-    
-                            </div>
-                        </div>
-                        <div id="profile-other-details">
-                            <form action="" method="post">
-                                <table id="other-details">
-                                    <tr>
-                                        <td className="label"><label htmlFor="full-name">Name</label></td>
-                                        <td> <input type="text" disabled value={`${userData.name}`} name="full-name" id="full-name" /> </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="label"><label htmlFor="address">Address</label></td>
-                                        <td> <input type="text" disabled value={userData.address} name="address" id="address" /> </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="label"><label htmlFor="city">City</label></td>
-                                        <td> <input type="text" disabled value={`wait man`} name="city" id="city" /> </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="label"><label htmlFor="pincode">Pincode</label></td>
-                                        <td> <input type="number" maxLength="6" disabled value={userData.address} name="pincode" id="pincode" /> </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="label"><label htmlFor="state">State</label></td>
-                                        <td> <input type="text" disabled value={userData.state} name="state" id="state" /> </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="label"><label htmlFor="phone-num">Phone No.</label></td>
-                                        <td> <input type="number" max="999999" disabled value={userData.phone} name="phone-num" id="phone-num" /> </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="label"><label htmlFor="email">Email Id</label></td>
-                                        <td> <input type="mail" disabled value={userData.email} name="email" id="email" /> </td>
-                                    </tr>
-    
-                                    <input id='submit-button' type="submit" value="Update Details" />
-                                    
-                                </table>
-                            </form>
                         </div>
                     </div>
-    
-                </>
-        );
-    }
+
+
+
+
+
+            </>
+    );
+}
 
 
 export default Profile;
