@@ -1,33 +1,140 @@
-.heading {
+
+        .heading {
+            text-align: center;
+            background-color: green;
+            margin: 20px 0;
+            padding: 10px 20px;
+            padding-bottom: 2.5px;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .cart {
+            max-width: 1200px;
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            flex-wrap: wrap;
+        }
+
+        .products {
+            margin: 10px;
+            width: 200px;
+        }
+
+        .products:hover {
+            box-shadow: 0 4px 10px rgba(128, 128, 128, 0.32);
+        }
+
+        .price {
+            font-weight: 500;
+        }
+
+        .quantity {
+            width: 40px;
+            border: 1px solid grey;
+        }
+
+        .quantity:focus {
+            border: none;
+            box-shadow: 0 0 0 0;
+        }
+
+        .btn:focus {
+            box-shadow: 0 0 0 0;
+        }
+
+        .btn {
+            margin-left: 8px;
+        }
+
+        .total {
+            border: 2px solid rgba(128, 128, 128, 0.486);
+            max-width: 1080px;
+            margin: auto;
+        }
+
+        .billing{
+            margin: auto;
+            width: 60%;
+            font-size: 20px;
+        }
+        .net{
+            font-size: 30px;
+        }
+        .amount{
+            text-align: right;
+        }
+        .amount::before{
+            content: "INR. ";
+        }
+        .buy{
+            font-size: 30px;
+            border: 2px solid orange;
+            margin: 0;
+            width: 100%;
+            background: yellow;
+        }
+        .del-btn{
+            color: white;
+            transform: translateY(6px);
+        }
+        @media (max-width: 420px) {
+            .products {
+                width: 180px;
+                margin: 4px 1px;
+            }
+
+            .btn {
+                width: 30px;
+                height: fit-content;
+                font-size: 14px;
+                padding: 0;
+                font-weight: 400;
+            }
+
+            .remove {
+                width: 140px;
+            }
+            .net{
+                font-size: 20px;
+            }
+            .billing{
+                width: 94%;
+            }
+            .buy{
+                width: 100%;
+                font-size: 30px;
+            }
+        }
+.quantity-control{
+    display: flex;
+}
+.quantity-control .btn{
+    margin: 0;
+    background: dodgerblue;
+    box-shadow: none;
+}
+.quantity-control input{
+    width: 40px;
     text-align: center;
-    background-color: green;
-    margin: 20px auto;
-    padding: 10px 20px;
-    padding-bottom: 2.5px;
-    border-radius: 50px;
-    color: white;
-    margin-top: 80px;
+    margin: 0 10px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-#Products-container {
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.card-wrap{
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
 }
-
-.products {
-    margin: 5px;
-}
-#quantity-of-product{
-    width: 50px;
-    border-bottom: 2px solid black;
-    font-size: large;
-}
-.card{
-    width: 300px;
-}
-.card-img-top{
-    height: 180px;
-    width: 180px;
-    margin: auto;
+.dropdown-item.active, .dropdown-item:active{
+    background-color: white!important;
+    color: #000;
 }

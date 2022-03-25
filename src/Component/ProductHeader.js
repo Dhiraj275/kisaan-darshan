@@ -19,9 +19,9 @@ function Product_header() {
                                 I want to buy
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a className="dropdown-item" href="#">Vegetables</a>
-                                <a className="dropdown-item" href="#">Fruits</a>
-                                <a className="dropdown-item" href="#">Grains and Pulses</a>
+                                <NavLink className="dropdown-item" to="/products">Vegetables</NavLink>
+                                <NavLink className="dropdown-item" to="/products">Fruits</NavLink>
+                                <NavLink className="dropdown-item" to="/products">Grains and Pulses</NavLink>
                             </div>
                         </li>
                         <li className="nav-item active">

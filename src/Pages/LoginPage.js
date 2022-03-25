@@ -63,7 +63,7 @@ function LoginPage() {
               <span className="material-icons input-icon">
                 key
               </span>
-              <input type="text" onChange={(event) => { setFormData({ ...formData, password: event.target.value }) }} name="password" id="password" placeholder="Password" />
+              <input type="password" onChange={(event) => { setFormData({ ...formData, password: event.target.value }) }} name="password" id="password" placeholder="Password" />
             </div>
             <button id="submit" onClick={signIn} type="button" >Login</button>
           </div>
