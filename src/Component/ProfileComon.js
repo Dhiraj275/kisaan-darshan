@@ -26,9 +26,11 @@ function ProfileComon() {
                 </div>
                 <br />
 
-                <NavLink className="btn btn-primery" to="/profile">Profile</NavLink>
-                <NavLink className="btn btn-primery" to="/orders">My Orders</NavLink>
-                <NavLink className="btn btn-primery" to="/change-password">Change Password</NavLink>
+                <div className="d-flex justify-content-center">
+                    <NavLink className="btn btn-primary" to="/profile">Profile</NavLink>
+                    <NavLink className="btn btn-primary" to="/orders">My Orders</NavLink>
+                    <NavLink className="btn btn-primary" to="/change-password">Change Password</NavLink>
+                </div>
             </div>
         </>
     )

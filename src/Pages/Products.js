@@ -7,7 +7,8 @@ function Product() {
         <>
             <ProductHeader />
             <div className="py-5">
-                <h3 className="text-center mt-4">
+                <hr />
+                 <h3 className="text-center mt-4">
                     Fruits
                 </h3>
                 <div className="card-wrap">
@@ -16,7 +17,8 @@ function Product() {
                     <ProductCard />
                     <ProductCard />
                 </div>
-                <h3 className="text-center mt-4">
+                <hr />
+                 <h3 className="text-center mt-4">
                     Vegitables
                 </h3>
                 <div className="card-wrap">
@@ -25,7 +27,8 @@ function Product() {
                     <ProductCard />
                     <ProductCard />
                 </div>
-                <h3 className="text-center mt-4">
+                <hr />
+                 <h3 className="text-center mt-4">
                     Grains
                 </h3>
                 <div className="card-wrap">
