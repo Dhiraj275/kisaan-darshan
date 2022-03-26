@@ -39,3 +39,17 @@ body{
     margin-right: -25px;
     z-index: 99;
 }
+footer{
+    display: flex;
+    justify-content: space-between;
+}
+footer ul{
+    display: flex;
+    list-style: none;
+}
+footer ul li{
+    margin: 0 5px;
+}
+footer ul li a{
+    color: #007bff !important;
+}

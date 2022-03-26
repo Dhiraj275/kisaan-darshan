@@ -26,9 +26,9 @@ function ProfileComon() {
                 </div>
                 <br />
 
-                <NavLink className={isActive => "btn btn-block " + (!isActive ? "" : "btn-primary")} to="/profile">Profile</NavLink>
-                <NavLink className={isActive => "btn btn-block " + (!isActive ? "" : "btn-primary")} to="/orders">My Orders</NavLink>
-                <NavLink className={isActive => "btn btn-block " + (!isActive ? "" : "btn-primary")} to="/change-password">Change Password</NavLink>
+                <NavLink className="btn btn-primery" to="/profile">Profile</NavLink>
+                <NavLink className="btn btn-primery" to="/orders">My Orders</NavLink>
+                <NavLink className="btn btn-primery" to="/change-password">Change Password</NavLink>
             </div>
         </>
     )
