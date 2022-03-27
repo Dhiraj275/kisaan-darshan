@@ -1,3 +1,3 @@
 git add .
-git commit -m "commit using shell file"
+git commit -m $1
 git push
