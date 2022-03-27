@@ -1,9 +1,11 @@
 import React from 'react'
+import Product_header from '../Component/ProductHeader'
 import ProfileComon from '../Component/ProfileComon'
 
 function ChangePassword() {
     return (
-        <body>
+        <div>
+            <Product_header/>
             <br />
             <br />
             <div className="container rounded bg-white mt-5 mb-5">
@@ -47,7 +49,7 @@ function ChangePassword() {
 
 
 
-        </body>
+        </div>
     )
 }
 

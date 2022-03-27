@@ -10,12 +10,12 @@ function Cart() {
                 <div className="container-block heading">
                     <h3>Items added to cart</h3>
                 </div>
-                <main id="Product-container">
+                <div id="Product-container">
                     <div className="cart cart1">
-                       
-                    <CartProduct />
 
-                    <CartProduct /><CartProduct /><CartProduct />
+                        <CartProduct />
+
+                        <CartProduct /><CartProduct /><CartProduct />
                     </div>
                     <hr />
                     <div className="card total">
@@ -34,10 +34,12 @@ function Cart() {
                                 </tr>
                             </tbody></table>
                         <br />
-                        <button className="btn font-weight-bold buy">Place Order</button>
+                        <button className="btn btn-primary profile-button" type="button">
+                            Place Order
+                        </button>
                     </div>
                     <hr />
-                </main>
+                </div>
             </div>
         </>
     );
@@ -64,22 +66,22 @@ const QualityControl = () => {
         </div>
     )
 }
-const CartProduct = () =>{
-    return(
+const CartProduct = () => {
+    return (
         <div className="card products">
-        <img className="card-img-top" src="https://qph.fs.quoracdn.net/main-qimg-29f5a40fb5a176dff29078d550b822ff.webp" alt="Card image cap" />
-        <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="price">Rs. 12/Kg</p>
-            <div className="row">
-                <QualityControl />
-            </div>
-            <br />
-            <div className="row">
-                <div className="col-xs-2"><button className="btn remove btn-danger"><i className="fa-solid fa-trash"></i> Remove Item</button></div>
+            <img className="card-img-top" src="https://qph.fs.quoracdn.net/main-qimg-29f5a40fb5a176dff29078d550b822ff.webp" alt="Card image cap" />
+            <div className="card-body">
+                <h5 className="card-title">Card title</h5>
+                <p className="price">Rs. 12/Kg</p>
+                <div className="row">
+                    <QualityControl />
+                </div>
+                <br />
+                <div className="row">
+                    <div className="col-xs-2"><button className="btn remove btn-danger"><i className="fa-solid fa-trash"></i> Remove Item</button></div>
+                </div>
             </div>
         </div>
-    </div>
     )
 }
 export default Cart;
