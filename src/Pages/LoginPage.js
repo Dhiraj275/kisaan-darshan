@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import { useState } from 'react';
 import { UserIDProvider } from '../App'
 function LoginPage() {
+  const [userData, setUserData] = useState(null)
   const [formData, setFormData] = useState({
     phone: '',
     password: ''
@@ -39,6 +40,7 @@ function LoginPage() {
     //   }
 
     // })
+  
     const phoneNumber = `+91${formData.phone}`;
     const appVerifier = window.recaptchaVerifier;
     firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
@@ -46,17 +48,40 @@ function LoginPage() {
         window.confirmationResult = confirmationResult;
         const code = window.prompt("enter otp")
         confirmationResult.confirm(code).then((result) => {
-          Swal.fire("User Verified Successfully!", '', 'success')
+          Swal.fire("User Verified Successfully!", '', 'success').then(() => {
+            var uid = result.user.uid
+    
+            
+            async function getData() {
+              const sfRef = await firebase.firestore().collection("users").doc(uid).get()
+              setUserData(sfRef.data())
+              if(sfRef.data()!==null){
+                if(sfRef.data()===undefined){
+                  window.location.replace('/register')
+                }
+                else{
+                  window.location.replace('/profile')
+                }
+              }
+            }
+            getData().then(()=>{
+              console.log(userData)
+              if(userData!==null){
+                if(userData===undefined){
+                  window.location.replace('/register')
+                }
+                else{
+                  window.location.replace('/profile')
+                }
+              }
+              else{
+                getData()
+              }
+            })
 
-          var uid = result.user
-          var userData;
-          async function getData() {
-            const sfRef = await firebase.firestore().collection("users").doc(uid).get()
-            userData = sfRef.data()
-            console.log(uid)
-          }
-          getData()
-          console.log(userData)
+          })
+
+          // console.log(userData)
           // if(userData===undefined){
           //   window.location.replace("/register")
           // }

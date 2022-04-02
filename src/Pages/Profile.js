@@ -77,11 +77,6 @@ function Profile() {
                                             <input  type="text" className="form-control" placeholder="" value={userData.pincode} />
                                         </div>
 
-                                        <div className="col-md-12">
-                                            <label className="labels">Gender</label>
-                                            <input  type="text" className="form-control" placeholder="" value={userData.gender} />
-                                        </div>
-
                                     </div>
                                     <div className="mt-5 text-center">
                                         <button className="btn btn-primary profile-button" type="button">
