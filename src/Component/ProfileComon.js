@@ -21,7 +21,7 @@ function ProfileComon() {
                 <div className="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img className="mb-5 rounded-circle" width="150px" src="https://www.coverallweb.in/images/team1.jpg" />
                     <span className="font-weight-bold">{userData ? userData.name : ''}</span>
-                    <span className="text-black-50"> <a href="tel:+91 8849959488">+91 {userData ? userData.phone : ''}</a> </span>
+                    <span className="text-black-50"> <a href="tel:+91 8849959488">{userData ? userData.phone : ''}</a> </span>
                     <span className="text-black-50"> <a href="mailto:himanshubari789@mail.com">{userData ? userData.email : ''}</a> </span>
                 </div>
                 <br />

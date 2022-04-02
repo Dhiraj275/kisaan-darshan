@@ -13,40 +13,51 @@ import Orders from './Pages/Orders';
 import ChangePassword from './Pages/ChangePassword';
 import firebase from './firebase';
 import { createContext, useState } from 'react';
+const UserIDProvider = createContext();
 const UserDataProvider = createContext();
 function App() {
-  const [userData, setUserData] = useState(null)
+  const [firebaseUserData, setFirebaseUserData] = useState(null)
+  const [userData, setUserData] = useState()
+
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      setUserData(user)
+      setFirebaseUserData(user)
+      var uid = user.uid
+      async function getData() {
+        const sfRef = await firebase.firestore().collection("users").doc(uid).get()
+        setUserData(sfRef.data())
+      }
+      getData()
     }
-    else{
-      setUserData(undefined)
+    else {
+      setFirebaseUserData(undefined)
     }
   })
-  if (userData!==null) {
-    if (userData !== null) {
+  if (firebaseUserData !== null) {
+    if (firebaseUserData !== null) {
       return (
         <>
           <UserDataProvider.Provider value={userData}>
-            <Routes>
-              <Route exact path="/" element={<KDIndex />} />
-              <Route exact path="/home" element={<HomePage />} />
-              <Route exact path="/contact" element={<ContactPage />} />
-              <Route exact path="/about" element={<AboutPage />} />
-              <Route exact path="/login" element={<LoginPage />} />
-              <Route exact path="/cart" element={<Cart />} />
-              <Route exact path="/profile" element={<Profile />} />
-              <Route exact path="/about" element={<AboutPage />} />
-              <Route exact path="/products" element={<Products />} />
-              <Route exact path="/register" element={<RegistrationPage />} />
-              <Route exact path="/orders" element={<Orders />} />
-              <Route exact path="/change-password" element={<ChangePassword />} />
-              <Route
-                path="*"
-                element={<Navigate to="/home" replace />}
-              />
-            </Routes>
+            <UserIDProvider.Provider value={firebaseUserData}>
+              <Routes>
+                <Route exact path="/" element={<KDIndex />} />
+                <Route exact path="/home" element={<HomePage />} />
+                <Route exact path="/contact" element={<ContactPage />} />
+                <Route exact path="/about" element={<AboutPage />} />
+                <Route exact path="/login" element={<LoginPage />} />
+                <Route exact path="/cart" element={<Cart />} />
+                <Route exact path="/profile" element={<Profile />} />
+                <Route exact path="/about" element={<AboutPage />} />
+                <Route exact path="/products" element={<Products />} />
+                <Route exact path="/register" element={<RegistrationPage />} />
+                <Route exact path="/orders" element={<Orders />} />
+                <Route exact path="/change-password" element={<ChangePassword />} />
+                <Route
+                  path="*"
+                  element={<Navigate to="/home" replace />}
+                />
+              </Routes>
+            </UserIDProvider.Provider>
           </UserDataProvider.Provider>
         </>
       )
@@ -81,4 +92,4 @@ function App() {
 }
 
 export default App;
-export { UserDataProvider }
+export { UserIDProvider, UserDataProvider }

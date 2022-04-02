@@ -45,7 +45,7 @@
     transform: translateY(-50%);
 }
 
-.login-page input[type="number"], .login-page input[type="password"] {
+.login-page input[type="tel"], .login-page input[type="number"] {
     font-size: 18px;
     border-radius: 20px;
     padding: 10px 20px 10px 45px;

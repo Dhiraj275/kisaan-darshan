@@ -58,10 +58,13 @@ function Profile() {
                                             <label className="labels">Email ID</label>
                                             <input  type="text" className="form-control" placeholder="" value={userData.email} />
                                         </div>
-
                                         <div className="col-md-12">
-                                            <label className="labels">City</label>
-                                            <input  type="text" className="form-control" placeholder="" value={userData.city} />
+                                            <label className="labels">State</label>
+                                            <input  type="text" className="form-control" placeholder="" value={userData.state} />
+                                        </div>
+                                        <div className="col-md-12">
+                                            <label className="labels">District</label>
+                                            <input  type="text" className="form-control" placeholder="" value={userData.district} />
                                         </div>
 
                                         {/* <div className="col-md-12">

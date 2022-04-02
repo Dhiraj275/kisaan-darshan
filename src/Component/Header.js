@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import simpleHouse from '../assets/images/simple-house-logo.png'
 import '../style/templatemo-style.css'
-import { UserDataProvider } from '../App'
+import { UserIDProvider } from '../App'
 function Header() {
     return (
         <div className="placeholder">
@@ -20,7 +20,7 @@ function Header() {
                             <ul className="tm-nav-ul">
                                 <li className="tm-nav-li"><NavLink to="/home" className="tm-nav-link">Home</NavLink></li>
                                 <li className="tm-nav-li">
-                                    <UserDataProvider.Consumer>
+                                    <UserIDProvider.Consumer>
                                         {
                                             (userData) => {
                                                 if (userData) {
@@ -35,7 +35,7 @@ function Header() {
 
                                             }
                                         }
-                                    </UserDataProvider.Consumer>
+                                    </UserIDProvider.Consumer>
 
                                 </li>
                             </ul>
