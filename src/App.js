@@ -24,7 +24,6 @@ function App() {
       setUserData(undefined)
     }
   })
-  console.log(userData)
   if (userData!==null) {
     if (userData !== null) {
       return (

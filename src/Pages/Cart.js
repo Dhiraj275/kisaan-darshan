@@ -2,6 +2,38 @@ import "../style/Cart.css";
 import ProductHeader from '../Component/ProductHeader';
 import '../style/products.css';
 import { useState } from "react";
+var Fruits = [
+    {
+        name: "Apple",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVae5_T-0OTRxwQAbZByo9noC0LdLTh4BI-w&usqp=CAU",
+        price: 60,
+        description: ""
+    },
+    {
+        name: "Mango",
+        url: "https://cdn.shopify.com/s/files/1/0506/9032/6708/products/MANGOEGYPT.jpg?v=1605624440",
+        price: 30,
+        description: ""
+    },
+    {
+        name: "PineApple",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9MSb7D0YsI7efHRbRZnKR8rUyyNjwb_1JtA&usqp=CAU",
+        price: 50,
+        description: ""
+    },
+    {
+        name: "Oranges",
+        url: "https://cdn-prod.medicalnewstoday.com/content/images/articles/272/272782/oranges-in-a-box.jpg",
+        price: 20,
+        description: ""
+    },
+    {
+        name: "Banana",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9wnfGPM_ekCoVWbHPvZyi_Oojr6tMXQTOLg&usqp=CAU",
+        price: 10,
+        description: ""
+    }
+];
 function Cart() {
     return (
         <>
@@ -12,13 +44,19 @@ function Cart() {
                 </div>
                 <div id="Product-container">
                     <div className="cart cart1">
-
-                        <CartProduct />
-
-                        <CartProduct /><CartProduct /><CartProduct />
+                    {
+                        Fruits.map((item, index) => {
+                            return (
+                                <CartProduct index={index} data={item} />
+                            )
+                        })
+                    }
                     </div>
                     <hr />
-                    <div className="card total">
+                   
+                    <hr />
+                </div>
+                <div className="card total">
                         <table className="billing">
                             <tbody><tr>
                                 <td>Total:</td>
@@ -38,8 +76,6 @@ function Cart() {
                             Place Order
                         </button>
                     </div>
-                    <hr />
-                </div>
             </div>
         </>
     );
@@ -66,13 +102,14 @@ const QualityControl = () => {
         </div>
     )
 }
-const CartProduct = () => {
+const CartProduct = (props) => {
+    var productData = props.data
     return (
         <div className="card products">
-            <img className="card-img-top" src="https://qph.fs.quoracdn.net/main-qimg-29f5a40fb5a176dff29078d550b822ff.webp" alt="Card image cap" />
+            <img className="card-img-top" src={productData.url} alt="Card image cap" />
             <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="price">Rs. 12/Kg</p>
+                <h5 className="card-title">{productData.name}</h5>
+                <p className="price">Rs. {productData.price}</p>
                 <div className="row">
                     <QualityControl />
                 </div>

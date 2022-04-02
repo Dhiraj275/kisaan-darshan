@@ -6,6 +6,7 @@
 .profile-button {
     color: #000000;
     background: white;
+    width: 100%;
     box-shadow: none;
     border: 1px solid #000000;
 }
@@ -21,4 +22,8 @@
 
 .labels {
     font-size: 12px;
+}
+.profile-nav-btn{
+    width:100%;
+    margin: 5px  0;
 }

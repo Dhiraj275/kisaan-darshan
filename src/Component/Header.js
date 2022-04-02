@@ -12,7 +12,7 @@ function Header() {
                         <div className="col-md-6 col-12">
                             <img src={simpleHouse} alt="Logo" className="tm-site-logo" />
                             <div className="tm-site-text-box">
-                                <h1 className="tm-site-title">eKISHAN DARSHAN</h1>
+                                <h1 className="tm-site-title">eKisan Darshan</h1>
                                 <h6 className="tm-site-description">Our Slogan here if any</h6>
                             </div>
                         </div>

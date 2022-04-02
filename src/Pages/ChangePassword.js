@@ -1,8 +1,9 @@
 import React from 'react'
 import Product_header from '../Component/ProductHeader'
 import ProfileComon from '../Component/ProfileComon'
-
+import firebase from '../firebase'
 function ChangePassword() {
+
     return (
         <div>
             <Product_header/>
