@@ -204,3 +204,4 @@ const ProductCard = (props) => {
     )
 }
 export default Product;
+export {Vegetables, Pesticides, Machinerires, Fruits, ProductCard}
