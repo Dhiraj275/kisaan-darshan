@@ -1,14 +1,15 @@
 import React from 'react'
-import Header from '../Component/Header'
+
 import '../style/home.css'
 // temp import
-import { Vegetables, Machinerires, Pesticides, Fruits, ProductCard } from './Products'
-import Product_header from '../Component/ProductHeader'
+import { Vegetables, Machinerires, Fruits, ProductCard } from './Products'
+import ProductHeader from '../Component/ProductHeader'
+
 
 function HomePage() {
     return (
         <>
-            <Product_header />
+            <ProductHeader />
             <div
                 id="carouselExampleControls"
                 className="carousel slide"
@@ -71,7 +72,7 @@ function HomePage() {
             </div>
             <br />
             <div className="Home">
-                <div className="card category-button">
+                {/* <div className="card category-button">
                     <a className="category-btn" href="#fruits-veg">
                         <button className="btn fandv">Fruits and Vegetables</button>
                     </a>
@@ -84,7 +85,7 @@ function HomePage() {
                     <a className="category-btn" href="#mach-farm">
                         <button className="btn mandf">Machineries and Farming Tools</button>
                     </a>
-                </div>
+                </div> */}
                 <br />
                 <div className="container">
                     <h3 className="text-center mt-4">
@@ -100,17 +101,19 @@ function HomePage() {
                         }
                     </div>
                     <hr />
-                    <h3 className="text-center mt-4">
-                        Vegitables
-                    </h3>
-                    <div className="card-wrap">
-                        {
-                            Vegetables.map((item, index) => {
-                                return (
-                                    <ProductCard index={index} data={item} />
-                                )
-                            })
-                        }
+                    <div className="categories-wrap">
+                        <h3 className="text-center mt-4">
+                            Vegitables
+                        </h3>
+                        <div className="card-wrap">
+                            {
+                                Vegetables.map((item, index) => {
+                                    return (
+                                        <ProductCard index={index} data={item} />
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
                     <hr />
                     <h3 className="text-center mt-4">
@@ -126,12 +129,12 @@ function HomePage() {
                         }
                     </div>
                 </div>
-                <div class="call-us">
-                    <div class="call-img">
+                <div className="call-us">
+                    <div className="call-img">
                         <img
                             src="https://images.unsplash.com/photo-1626863905121-3b0c0ed7b94c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y3VzdG9tZXIlMjBzZXJ2aWNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                             loading="lazy"
-                            class="img-block"
+                            className="img-block"
                             alt="Customer Care Executive"
                         />
                     </div>
@@ -156,7 +159,7 @@ function HomePage() {
                             <a href="tel:+918849959488">8849959488</a>
                         </p>
                     </div>
-                    <div class="footer">
+                    <div className="footer">
                         <button>About us</button>
                         <button>Contact us</button>
                     </div>

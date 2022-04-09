@@ -16,12 +16,16 @@ function RegistrationPage() {
         setFormData({ ...formData, [name]: value });
     }
     const registrUser = (firebaseUserData) => {
-        console.log(firebaseUserData)
-        var uid = firebaseUserData.uid  
-          firebase.firestore().collection('users').doc(uid).set({ ...formData, phone: firebaseUserData.phoneNumber }).then(() => {
-                Swal.fire("User Registed Successfully!", '', 'success').then(()=> {window.location.replace('/profile')})
+        console.log(formData.name, formData.email, formData.address, formData.state, formData.district)
+        if (formData.name !== "" && formData.address !== "" && formData.state !== "" && formData.district !== "" && formData.name !== undefined && formData.address !== undefined && formData.state !== undefined && formData.district !== undefined) {
+            var uid = firebaseUserData.uid
+            firebase.firestore().collection('users').doc(uid).set({ ...formData, phone: firebaseUserData.phoneNumber }).then(() => {
+                Swal.fire("User Registed Successfully!", '', 'success').then(() => { window.location.replace('/profile') })
             })
-    
+        }
+        else {
+            Swal.fire('Invalid Inputs', 'Please Enter all data correctly', 'error')
+        }
         // firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password)
         // .then((event) => {
         //     console.log(event.user.uid)
@@ -46,7 +50,7 @@ function RegistrationPage() {
             <UserIDProvider.Consumer>
                 {
                     (firebaseUserData) => {
-                        console.log(firebaseUserData)
+                       
                         return (
                             <UserDataProvider.Consumer>
                                 {
@@ -75,7 +79,7 @@ function RegistrationPage() {
                                                                     <label for="agree"><input type="checkbox" name="agree" id="agree" />I agree to the terms and condition mentioned in <a href="">privacy policy and agreement statement</a>.</label>
                                                                     <br />
                                                                 </div>
-                                                                <input className="inputs-reg" value="Submit" id="submit" type="button" onClick={()=>{registrUser(firebaseUserData)}} />
+                                                                <input className="inputs-reg" value="Submit" id="submit" type="button" onClick={() => { registrUser(firebaseUserData) }} />
                                                                 <br /><br />
                                                                 <div id="recaptcha-container"></div>
                                                                 <div className="d-flex justify-content-center">

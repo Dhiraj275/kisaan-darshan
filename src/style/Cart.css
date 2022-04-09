@@ -19,9 +19,6 @@
 .products {
     margin: 10px;
     width: 200px;
-}
-
-.products:hover {
     box-shadow: 0 4px 10px rgba(128, 128, 128, 0.32);
 }
 
@@ -101,9 +98,11 @@
         padding: 0;
         font-weight: 400;
     }
-    .card-wrap{
+
+    .card-wrap {
         flex-wrap: wrap;
     }
+
     .remove {
         width: 140px;
         font-size: 18px;
@@ -158,10 +157,32 @@ input[type=number] {
 
 .card-wrap {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    margin: 10px 50px;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
 }
 
-.dropdown-item.active, .dropdown-item:active {
+.card-wrap::-webkit-scrollbar{
+    background-color: #00000000;
+}
+.dropdown-item.active,
+.dropdown-item:active {
     background-color: white !important;
     color: #000;
+}
+@media (max-width:611px) {
+    .card-wrap{
+        flex-wrap: nowrap;
+    }
+    .Home .card{
+        scroll-snap-align: start;
+    }
+    .card-body{
+        text-align: left;
+        width: 150px;
+    }
+    .products{
+        min-width: 150px;
+    }
 }

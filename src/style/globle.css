@@ -53,3 +53,8 @@ footer ul li{
 footer ul li a{
     color: #007bff !important;
 }
+@media (max-width:611px) {
+    footer{
+        flex-wrap: wrap;
+    }
+}

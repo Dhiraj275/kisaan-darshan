@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductHeader from '../Component/ProductHeader';
 import '../style/products.css';
+import firebase from '../firebase';
 var Fruits = [
     {
         name: "Apple",
@@ -102,25 +103,59 @@ var Vegetables = [
         description: ""
     }
 ]
+
 function Product() {
+const [itemsData, setItemsData] = useState({itemData:[], category:[]})
+    useEffect(() => {
+        const loadData = () => {
+            firebase.database().ref('items/').on('value', (snapshot) => {
+              var snapVal = snapshot.val();
+              const rowItemsArr = [];
+        
+              for (let id in snapVal) {
+                rowItemsArr.push({ id, ...snapVal[id] })
+              }
+            //   console.log(rowItemsArr)
+        
+              firebase.database().ref('categories/').on('value', (snapshot) => {
+                var snapVal = snapshot.val();
+                const rowCateArr = [];
+        
+                for (let id in snapVal) {
+                  rowCateArr.push({ id, ...snapVal[id] })
+                }
+                
+                setItemsData({ itemData: rowItemsArr, category: rowCateArr })
+
+              })
+            })
+          }
+          loadData()
+      return () => {
+        loadData()
+      }
+    }, [])
+    
+    //   loadData();
     return (
         <>
             <ProductHeader />
-            <div className="py-5">
+            <div className="py-5" >
                 <hr />
                 <h3 className="text-center mt-4">
                     Fruits
                 </h3>
                 <div className="card-wrap">
                     {
-                        Fruits.map((item, index) => {
+                    
+                        itemsData.itemData.map((item, index) => {
                             return (
                                 <ProductCard index={index} data={item} />
                             )
                         })
                     }
                 </div>
-                <hr />
+                {/* <hr />
                 <h3 className="text-center mt-4">
                     Vegitables
                 </h3>
@@ -157,7 +192,7 @@ function Product() {
                             )
                         })
                     }
-                </div>
+                </div> */}
             </div>
         </>
     )
@@ -188,7 +223,7 @@ const ProductCard = (props) => {
     var itemData = props.data
     return (
         <div key={props.index} className="card products">
-            <img className="card-img-top" src={itemData.url} alt="Card image cap" />
+            <img className="card-img-top" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVae5_T-0OTRxwQAbZByo9noC0LdLTh4BI-w&usqp=CAU'} alt="Card image cap" />
             <div className="card-body">
                 <h5 className="card-title">{itemData.name}</h5>
                 <p className="price">Rs. {itemData.price}</p>

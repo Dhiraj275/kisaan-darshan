@@ -1,0 +1,8 @@
+quantity
+name
+units
+price/kg
+img url
+seller name 
+seller distict
+other info

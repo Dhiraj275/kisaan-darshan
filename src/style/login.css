@@ -90,7 +90,33 @@
     border-bottom-right-radius: 40px;
     padding: 2px 10px;
 }
-
+.otp-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    background-color: rgba(0,0,0,.9);
+    color: #000;
+    text-align: center;
+}
+.otp-main .otp-box{
+    backdrop-filter: blur(9px);
+    padding: 30px 20px;
+    background-color: rgba(255,255,255, .6);
+    border-radius: 40px;
+}
+.otp-box input{
+    margin-bottom: 10px;
+    width: 100%;
+}
+.swal2-container.swal2-center.swal2-backdrop-show{
+    z-index: 99999!important;
+}
 @media (max-width: 420px) {
     .login-page input {
         width: 200px;
